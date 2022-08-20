@@ -8,7 +8,17 @@ alias zshconfig="nvim ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias c="clear"
 
-alias nv="nvim"
+if (( $+commands[nvim] )); then
+  alias nv="nvim"
+else
+  echo 'nvim: command not found, please install it from https://github.com/neovim/neovim/wiki/Installing-Neovim'
+fi
+
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+else
+  echo 'zoxide: command not found, please install it from https://github.com/ajeetdsouza/zoxide'
+fi
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
